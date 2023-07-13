@@ -1,0 +1,54 @@
+[
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "name_product": "Абрикос",
+      "description": "",
+      "image": "",
+      "category": 7,
+      "price": 125,
+      "date_of_creation": "2023-07-13",
+      "last_modified_date": "2023-07-13"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+      "name_product": "Картофель",
+      "description": "",
+      "image": "",
+      "category": 8,
+      "price": 123,
+      "date_of_creation": "2023-07-12",
+      "last_modified_date": "2023-07-13"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+      "name_product": "Свекла",
+      "description": "",
+      "image": "",
+      "category": 8,
+      "price": 54,
+      "date_of_creation": "2023-07-13",
+      "last_modified_date": "2023-07-13"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 8,
+    "fields": {
+      "name_product": "Банан",
+      "description": "",
+      "image": "",
+      "category": 10,
+      "price": 97,
+      "date_of_creation": "2023-07-13",
+      "last_modified_date": "2023-07-13"
+    }
+  }
+]
