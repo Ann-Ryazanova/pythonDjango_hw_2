@@ -1,0 +1,50 @@
+{% extends 'catalog/base.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="col-12 mb-5">
+    <a class="btn btn-outline-primary" href="{% url 'catalog:create_product' %}">
+        Добавить продукт
+    </a>
+</div>
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">{{ title }}</h1>
+</div>
+
+
+<div class="container">
+    <div class="row text-center">
+        {% for object in object_list %}
+        <div class="col-3">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">{{ object.name_product | title }}</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title"></h1>
+                    <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                        <img src="{{ object.image|mediapath }}" width="448" height="255" class="card-img-top"
+                             alt="...">
+                        <li>{{ object.description | slice:100 }}...</li>
+                    </ul>
+                    <p><a class="btn btn-secondary" href="{% url 'catalog:product_detail' object.pk %}"
+                          role="button">Подробнеe&raquo;</a></p>
+                    <p><a href="{% url 'catalog:update_product' object.pk %}" type="button" class="btn btn-success">Редактировать</a>
+                    </p>
+                    <p><a href="{% url 'catalog:delete_product' object.pk %}" type="button" class="btn btn-danger">Удалить</a>
+                    </p>
+                </div>
+                <div class="card-footer text-muted">
+                    {% for form in formset %}
+                    {% if form.product == object and form.current_version == True %}
+                    Номер версии: {{ form.number_version }}: {{ form.name_version }}
+                    {% endif %}
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
