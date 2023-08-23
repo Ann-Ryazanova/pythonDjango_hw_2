@@ -1,10 +1,52 @@
 {% load static %}
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title }}</title>
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+
+    <style>
+        .navbar {margin-bottom: 5px;}
+
+        body {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: auto;
+        padding-right: auto;
+        }
+
+       .container {max-width: 2700px;}
+
+        .card-header {
+        font-family: verdana;
+        font-size:300%
+        min-width: 20px;
+        padding: auto;
+        }
+
+        .card-body { padding: auto;}
+
+        ul { text-align: auto; font-style: norma;}
+
+        .card-footer {
+        font-family: verdana;
+        font-size: small;
+        font-style: norma
+        font-size:50%
+        min-width: auto;
+        padding: auto;
+        }
+
+        .btn-secondary {padding-left: 20px; padding-right: 20px;}
+
+        .btn-success{padding-left: 10px; padding-right: 10px;}
+
+        .btn-danger{padding-left: 35px; padding-right: 35px;}
+    </style>
 
 
 </head>
