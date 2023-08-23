@@ -17,9 +17,9 @@
         {% for object in object_list %}
         <div class="col-3">
             <div class="card mb-4 box-shadow">
-                <div class="card-header">
+                <p> <div class="card-header">
                     <h4 class="my-0 font-weight-normal">{{ object.name_product | title }}</h4>
-                </div>
+                </div> </p>
                 <div class="card-body">
                     <h1 class="card-title pricing-card-title"></h1>
                     <ul class="list-unstyled mt-3 mb-4 text-start m-3">
@@ -37,7 +37,7 @@
                 <div class="card-footer text-muted">
                     {% for form in formset %}
                     {% if form.product == object and form.current_version == True %}
-                    Номер версии: {{ form.number_version }}: {{ form.name_version }}
+                    Номер версии: {{ form.number_version }}_{{ form.name_version }};
                     {% endif %}
                     {% endfor %}
 
