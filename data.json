@@ -1,0 +1,118 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 39,
+    "fields": {
+      "name_category": "vegetable",
+      "description_category": ""
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 40,
+    "fields": {
+      "name_category": "fruit",
+      "description_category": ""
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 41,
+    "fields": {
+      "name_category": "dairy product",
+      "description_category": ""
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 15,
+    "fields": {
+      "name_product": "Инжир",
+      "description": "Этот инжир такой нежный, что его можно есть прямо с кожицей. Шелковистый, сочный, сладкий, без доли терпкости. Удивительная мясистая текстура, утончённый вкус и космическое сочетание оттенков делают эти плоды прекрасным десертом и изысканной закуской.",
+      "image": "products/ingir.jpg",
+      "category": 40,
+      "price": 54,
+      "date_of_creation": "2023-08-07",
+      "last_modified_date": "2023-08-07"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 16,
+    "fields": {
+      "name_product": "Молодой картофель",
+      "description": "Жареные золотистые дольки, ароматное пюре из детства, цельные клубни, сваренные «в мундире» – картофель прекрасен в любых кулинарных проявлениях. Вкус этого продукта столь же уникален, как и он сам. В приготовленном виде он, как правило, имеет мягкую крахмалисую текстуру и сладковатый привкус. Какая бы кулинарная идея с участием картофеля ни пришла вам в голову, воплотить её будет нетрудно!",
+      "image": "products/kartofel_ge2mzgS.jpg",
+      "category": 39,
+      "price": 38,
+      "date_of_creation": "2023-08-07",
+      "last_modified_date": "2023-08-07"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 17,
+    "fields": {
+      "name_product": "Йогурт греческий",
+      "description": "Продукт приготовлен из натурального коровьего молока с использованием йогуртовой закваски. Производится по греческой технологии. У йогурта густая консистенция и выразительный кисломолочный вкус, который прекрасно сочетается с гранолой и мюслями. Кроме того, продукт станет более лёгкой альтернативой сметане и майонезу: в целой упаковке содержится менее 100 ккал!",
+      "image": "products/yougurt_uUYN5w3.jpg",
+      "category": 41,
+      "price": 78,
+      "date_of_creation": "2023-08-07",
+      "last_modified_date": "2023-08-07"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 24,
+    "fields": {
+      "name_product": "Моцарелла",
+      "description": "",
+      "image": "products/mozzarella.jpeg",
+      "category": 41,
+      "price": 125,
+      "date_of_creation": "2023-08-20",
+      "last_modified_date": "2023-08-20"
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 1,
+    "fields": {
+      "product": 24,
+      "number_version": "2.1",
+      "name_version": "1",
+      "current_version": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 2,
+    "fields": {
+      "product": 24,
+      "number_version": "13",
+      "name_version": "1",
+      "current_version": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 3,
+    "fields": {
+      "product": 17,
+      "number_version": "1",
+      "name_version": "Test",
+      "current_version": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 4,
+    "fields": {
+      "product": 17,
+      "number_version": "2",
+      "name_version": "test_2",
+      "current_version": true
+    }
+  }
+]
