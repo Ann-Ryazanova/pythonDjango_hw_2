@@ -1,5 +1,6 @@
 {% extends 'catalog/base.html' %}
 {% load my_tags %}
+{% load auth_extras %}
 {% block content %}
 <div class="col-12 mb-5">
     {% if user.is_authenticated %}
@@ -32,7 +33,7 @@
                     <p><a class="btn btn-secondary" href="{% url 'catalog:product_detail' object.pk %}"
                           role="button">Подробнеe&raquo;</a></p>
 
-                    {% if object.owner == user or user.is_staff == True %}
+                    {% if object.owner == user or user|has_group:"модератор" %}
                     <p><a href="{% url 'catalog:update_product' object.pk %}" type="button" class="btn btn-success">Редактировать</a>
                     </p>
                     {% endif %}
