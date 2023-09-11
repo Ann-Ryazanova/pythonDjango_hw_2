@@ -1,12 +1,20 @@
 {% extends 'catalog/base.html' %}
 {% load my_tags %}
+
+{% load auth_extras %}
+
 {% block content %}
+
+
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
     <h1 class="display-4">{{ title }}</h1>
 </div>
+
+{% if user|has_group:"content_manager" %}
 <div class="col-12 mb-5">
     <a class="btn btn-outline-primary" href="{% url 'blog:create' %}">Добавить статью</a>
 </div>
+{% endif %}
 <div class="container">
     <div class="row text-center">
         {% for object in object_list %}
@@ -20,18 +28,22 @@
                     <ul class="list-unstyled mt-3 mb-4 text-start m-3">
                         <li>{{ object.content | slice:100 }}...</li>
                     </ul>
+
                     <p><a class="btn btn-group">
                         <a href="{% url 'blog:view' object.pk %}"
                            class="btn btn-sm btn-outline-secondary btn-lg">Просмотр</a>
+                        {% if user|has_group:"content_manager" %}
                         <a href="{% url 'blog:edit' object.pk %}"
                            class="btn btn-sm btn-outline-secondary btn-lg">Редактировать</a>
                         <a href="{% url 'blog:delete' object.pk %}"
                            class="btn btn-sm btn-outline-secondary btn-lg">Удалить</a>
                     </a></p>
+                    {% endif %}
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
 </div>
+
 {% endblock %}
