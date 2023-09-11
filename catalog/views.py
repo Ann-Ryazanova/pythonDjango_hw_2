@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 from django.forms import inlineformset_factory
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView, TemplateView, CreateView, UpdateView, DeleteView
@@ -21,10 +21,13 @@ class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
 
 
-class ProductCreateView(LoginRequiredMixin, CreateView):
+class ProductCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:list')
+
+    def test_func(self):
+        return self.request.user
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
@@ -50,10 +53,17 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class ProductUpdateView(LoginRequiredMixin, UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:list')
+    #permission_required = 'catalog.change_product'
+
+    def test_func(self):
+        return self.request.user.is_staff or self.get_object().owner == self.request.user
+
+    #def test_func(self):
+    #    return self.request.user
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
@@ -75,9 +85,12 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
         return super().form_valid(form)
 
 
-class ProductDeleteView(LoginRequiredMixin, DeleteView):
+class ProductDeleteView(LoginRequiredMixin,UserPassesTestMixin, DeleteView):
     model = Product
     success_url = reverse_lazy('catalog:list')
+
+    def test_func(self):
+        return self.request.user.is_superuser or self.get_object().owner == self.request.user
 
 
 class ProductContactView(TemplateView):
