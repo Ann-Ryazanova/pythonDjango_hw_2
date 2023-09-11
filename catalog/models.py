@@ -28,6 +28,24 @@ class Product(models.Model):
 
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, verbose_name='Владелец карточки', **NULLABLE)
 
+    is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
+
+    class Meta:
+        permissions = [
+            (
+                "set_published_status",
+                "Can publish card"
+            ),
+            (
+                "set_description",
+                "Can description product",
+            ),
+            (
+                "set_category",
+                "Can category product"
+            )
+        ]
+
 
     def __str__(self):
         return f"{self.name_product} {self.description}" \
