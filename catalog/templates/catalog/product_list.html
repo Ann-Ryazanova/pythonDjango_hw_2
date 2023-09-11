@@ -13,15 +13,15 @@
     <h1 class="display-4">{{ title }}</h1>
 </div>
 
-
 <div class="container">
     <div class="row text-center">
         {% for object in object_list %}
+        {% if object.is_published == True %}
         <div class="col-3">
             <div class="card mb-4 box-shadow">
-                <p> <div class="card-header">
+                <div class="card-header">
                     <h4 class="my-0 font-weight-normal">{{ object.name_product | title }}</h4>
-                </div> </p>
+                </div>
                 <div class="card-body">
                     <h1 class="card-title pricing-card-title"></h1>
                     <ul class="list-unstyled mt-3 mb-4 text-start m-3">
@@ -35,6 +35,8 @@
                     {% if object.owner == user or user.is_staff == True %}
                     <p><a href="{% url 'catalog:update_product' object.pk %}" type="button" class="btn btn-success">Редактировать</a>
                     </p>
+                    {% endif %}
+                    {% if object.owner == user or user.is_superuser == True %}
                     <p><a href="{% url 'catalog:delete_product' object.pk %}" type="button" class="btn btn-danger">Удалить</a>
                     </p>
                     {% endif %}
@@ -50,6 +52,7 @@
                 </div>
             </div>
         </div>
+        {% endif %}
         {% endfor %}
     </div>
 </div>
