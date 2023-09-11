@@ -1,5 +1,6 @@
 import random
 from django.contrib.auth import login
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.sites.shortcuts import get_current_site
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
@@ -73,7 +74,7 @@ class EmailVerify(View):
         return user
 
 
-class UserUpdateView(UpdateView):
+class UserUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     success_url = reverse_lazy('users:profile')
     form_class = UserProfileForm
