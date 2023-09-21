@@ -2,7 +2,7 @@
 {% load my_tags %}
 {% load auth_extras %}
 {% block content %}
-<div class="col-12 mb-5">
+<div class="col-12 mb-2">
     {% if user.is_authenticated %}
     <a class="btn btn-outline-primary" href="{% url 'catalog:create_product' %}">
         Добавить продукт
@@ -10,9 +10,17 @@
     {% endif %}
 </div>
 
-<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">{{ title }}</h1>
+<div class="pricing-header px-3 py-1 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Продуктовая лавка</h1>
 </div>
+
+<div class="text-left px-3 py-4">
+    <h6>Категории:</h6>
+    {% for subject in subject_list %}
+    <a href="#" class="card-link">{{ subject }}</a>
+    {% endfor %}
+</div>
+
 
 <div class="container">
     <div class="row text-center">
@@ -57,4 +65,6 @@
         {% endfor %}
     </div>
 </div>
+
+
 {% endblock %}
