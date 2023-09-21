@@ -84,7 +84,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
 
 
 def generate_new_password(request):
-    new_password = new_password = ''.join([str(random.randint(0, 9)) for _ in range(12)])
+    new_password = ''.join([str(random.randint(0, 9)) for _ in range(12)])
 
     send_mail(
         subject='Вы сменили пароль',
