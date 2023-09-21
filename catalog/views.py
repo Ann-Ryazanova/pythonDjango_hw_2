@@ -5,6 +5,7 @@ from django.views.generic import DetailView, ListView, TemplateView, CreateView,
 
 from catalog.models import Product, Version
 from catalog.forms import ProductForm, VersionForm
+from catalog.service import get_cached_category
 
 
 class ProductListView(ListView):
@@ -14,6 +15,7 @@ class ProductListView(ListView):
         context_data = super().get_context_data()
         version_list = Version.objects.all()
         context_data['formset'] = version_list
+        context_data['subject_list'] = get_cached_category()
         return context_data
 
 
